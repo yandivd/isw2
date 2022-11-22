@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
@@ -55,5 +55,13 @@ def crearPaciente(request):
         'form': PacienteForm,
     }
 #crear el post si recivo datos...
+    if request.method=='POST':
+        formulario=PacienteForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            # messages.success(request,"Modificada Correctamente")
+            return redirect(to='home') #te redirige al listado de productos ya editados
+        else:
+            data["form"]=formulario
 
     return render(request, 'gestion/pacientes/create.html', data)

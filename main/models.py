@@ -37,7 +37,7 @@ class Enfermero(models.Model):
     
 
 class Paciente(models.Model):
-    img = models.ImageField(upload_to='pacientes')
+    img = models.ImageField(upload_to='pacientes', null=True, blank=True)
     ci=models.CharField(max_length=11)
     nombre = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=150)
