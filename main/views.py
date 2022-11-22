@@ -54,5 +54,6 @@ def crearPaciente(request):
     data = {
         'form': PacienteForm,
     }
+#crear el post si recivo datos...
 
     return render(request, 'gestion/pacientes/create.html', data)
