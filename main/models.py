@@ -59,5 +59,15 @@ class Historia_clinica(models.Model):
 
     def __str__(self):
         return str(self.numero)
+
+class Paciente(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        if self.usuario.first_name:
+            return self.usuario.first_name
+        else:
+            return self.usuario.username
+    
     
     
