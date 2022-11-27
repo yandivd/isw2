@@ -13,11 +13,8 @@ class MedicoAdmin(admin.ModelAdmin):
 class EnfermeroAdmin(admin.ModelAdmin):
     list_display=('usuario',)
 
-class PacienteAdmin(admin.ModelAdmin):
-    list_display=('nombre','apellidos','direccion','provincia','municipio','telf_movil')
-
 class HCAdmin(admin.ModelAdmin):
-    list_display=('numero','paciente')
+    list_display=('numero','nombre','apellidos','ci',)
 
 class EstadoAdmin(admin.ModelAdmin):
     list_display=('nombre',)
@@ -27,6 +24,5 @@ admin.site.register(Sexo, SexoAdmin)
 admin.site.register(Especialidad, EspecialidadAdmin)
 admin.site.register(Medico, MedicoAdmin)
 admin.site.register(Enfermero, EnfermeroAdmin)
-admin.site.register(Paciente, PacienteAdmin)
 admin.site.register(Historia_clinica, HCAdmin)
 admin.site.register(Estado,EstadoAdmin)

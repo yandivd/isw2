@@ -36,7 +36,8 @@ class Enfermero(models.Model):
         return self.usuario.username
     
 
-class Paciente(models.Model):
+class Historia_clinica(models.Model):
+    numero = models.IntegerField()
     img = models.ImageField(upload_to='pacientes', null=True, blank=True)
     ci=models.CharField(max_length=11)
     nombre = models.CharField(max_length=100)
@@ -54,13 +55,6 @@ class Paciente(models.Model):
     telf_movil = models.CharField(max_length=8)
     telf_fijo = models.CharField(max_length=8)
     observaciones = models.TextField()
-
-    def __str__(self):
-        return self.nombre+' '+self.apellidos
-
-class Historia_clinica(models.Model):
-    numero = models.IntegerField()
-    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
 
     def __str__(self):

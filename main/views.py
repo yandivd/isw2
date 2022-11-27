@@ -14,11 +14,15 @@ def home(request):
 # Historias Clinicas CRUD
 @login_required
 def hclistar(request):
-    estadoT = Estado.objects.get(nombre='Activo')
-    historias = Historia_clinica.objects.all().filter(estado=estadoT)
-    return render(request, 'gestion/hc/hclist.html',{
+    try:
+        estadoT = Estado.objects.get(nombre='Activo')
+        historias = Historia_clinica.objects.all().filter(estado=estadoT)
+        return render(request, 'gestion/hc/hclist.html',{
         'historias': historias,
     })
+    except Exception as e:
+        print(e)
+    return render(request, 'gestion/hc/hclist.html')
 
 @permission_required('main.add_historia_clinica')
 def crearHC(request):
@@ -26,7 +30,15 @@ def crearHC(request):
     data = {
         'form': HCForm,
     }
-
+    
+    if request.method=='POST':
+        formulario=HCForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            # messages.success(request,"Modificada Correctamente")
+            return redirect(to='home') #te redirige al listado de productos ya editados
+        else:
+            data["form"]=formulario
     return render(request, 'gestion/hc/create.html', data)
 
 def verHC(request,pk):
@@ -48,20 +60,20 @@ def verHC(request,pk):
     return render(request,'gestion/hc/view.html', data)
 
 #Cosas de los Pacientes
-@permission_required('main.add_paciente')
-def crearPaciente(request):
+# @permission_required('main.add_paciente')
+# def crearPaciente(request):
     
-    data = {
-        'form': PacienteForm,
-    }
-#crear el post si recivo datos...
-    if request.method=='POST':
-        formulario=PacienteForm(data=request.POST, files=request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            # messages.success(request,"Modificada Correctamente")
-            return redirect(to='home') #te redirige al listado de productos ya editados
-        else:
-            data["form"]=formulario
+#     data = {
+#         'form': PacienteForm,
+#     }
+# #crear el post si recivo datos...
+#     if request.method=='POST':
+#         formulario=PacienteForm(data=request.POST, files=request.FILES)
+#         if formulario.is_valid():
+#             formulario.save()
+#             # messages.success(request,"Modificada Correctamente")
+#             return redirect(to='home') #te redirige al listado de productos ya editados
+#         else:
+#             data["form"]=formulario
 
-    return render(request, 'gestion/pacientes/create.html', data)
+#     return render(request, 'gestion/pacientes/create.html', data)
