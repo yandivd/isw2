@@ -69,5 +69,8 @@ class Paciente(models.Model):
         else:
             return self.usuario.username
     
+class Formulario(models.Model):
+    situacion = models.CharField(max_length=2000)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)    
     
     
