@@ -1,6 +1,5 @@
 {% load static %}
-    <form method="get">
+    <form method="get" enctype="multipart/form-data">
         {%csrf_token%}
         {{formHC}}
-        {{formP}}
     </form>

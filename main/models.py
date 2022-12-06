@@ -9,7 +9,7 @@ class Sexo(models.Model):
         return self.sexo
 
 class Estado(models.Model):
-    nombre = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=50)
     
     def __str__(self):
         return self.nombre
@@ -59,5 +59,18 @@ class Historia_clinica(models.Model):
 
     def __str__(self):
         return str(self.numero)
+
+class Paciente(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        if self.usuario.first_name:
+            return self.usuario.first_name
+        else:
+            return self.usuario.username
+    
+class Formulario(models.Model):
+    situacion = models.CharField(max_length=2000)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)    
     
     

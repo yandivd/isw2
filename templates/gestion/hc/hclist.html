@@ -27,22 +27,22 @@
                     {% for i in historias %}
                     <tr>
                         <td>{{i.numero}}</td>
-                        <td>{{i.paciente.nombre}}</td>
-                        <td>{{i.paciente.apellidos}}</td>
-                        <td>{{i.paciente.ci}}</td>
-                        <td>{{i.paciente.provincia}}</td>
-                        <td>{{i.paciente.municipio}}</td>
-                        <td>{{i.paciente.sexo}}</td>
+                        <td>{{i.nombre}}</td>
+                        <td>{{i.apellidos}}</td>
+                        <td>{{i.ci}}</td>
+                        <td>{{i.provincia}}</td>
+                        <td>{{i.municipio}}</td>
+                        <td>{{i.sexo}}</td>
                         {% comment %} <td>{{i.paciente.edad}}</td> {% endcomment %}
-                        <td>{{i.paciente.pk}}</td>
+                        <td>{{i.pk}}</td>
                         <td style="width: 200px;">
                             <a href="{% url 'ver_hc' i.pk %}" type="button" class="btn btn-success">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a href="#" type="button" class="btn btn-warning">
+                            <a href="{% url 'editar_hc' i.pk %}" type="button" class="btn btn-warning">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="#" type="button" class="btn btn-danger">
+                            <a href="{% url 'matarP' i.pk %}" type="button" class="btn btn-danger">
                                 <i class="fas fa-procedures"></i>
                             </a>
                         </td>

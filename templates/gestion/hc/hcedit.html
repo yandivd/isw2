@@ -1,0 +1,6 @@
+{% load static %}
+    <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{formHC}}
+        <button type="submit">Editar</button>
+    </form>
