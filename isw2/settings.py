@@ -81,6 +81,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+#Postgre SQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.path.join('sghc'),
+#         'USER': 'yandivd',
+#         'PASSWORD': 'etecsa',
+#         'HOST': 'localhost',
+#         'DATABASE_PORT': '5432',
+#     }
+# }
 
 
 # Password validation

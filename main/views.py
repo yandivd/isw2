@@ -42,10 +42,12 @@ def crearHC(request):
             data["form"]=formulario
     return render(request, 'gestion/hc/create.html', data)
 
-def verHC(request,id):
-    hc = get_object_or_404(Historia_clinica, id=id)
-    data = {
-        "formHC" : HCForm(instance=hc),
+def ver_hc(request, id):
+
+    hc= get_object_or_404(Historia_clinica, id=id) #toma el producto de la id
+
+    data={
+        "formHC": HCForm(instance=hc) #toma el formulario agregar producto con los datos del instance
     }
 
     return render(request,'gestion/hc/view.html', data)
