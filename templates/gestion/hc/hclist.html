@@ -27,7 +27,7 @@
                     {% for i in historias %}
                     <tr>
                         <td>{{i.numero}}</td>
-                        <td>{{i..nombre}}</td>
+                        <td>{{i.nombre}}</td>
                         <td>{{i.apellidos}}</td>
                         <td>{{i.ci}}</td>
                         <td>{{i.provincia}}</td>
@@ -39,10 +39,10 @@
                             <a href="{% url 'ver_hc' i.pk %}" type="button" class="btn btn-success">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a href="#" type="button" class="btn btn-warning">
+                            <a href="{% url 'editar_hc' i.pk %}" type="button" class="btn btn-warning">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="#" type="button" class="btn btn-danger">
+                            <a href="{% url 'matarP' i.pk %}" type="button" class="btn btn-danger">
                                 <i class="fas fa-procedures"></i>
                             </a>
                         </td>

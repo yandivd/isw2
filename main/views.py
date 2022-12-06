@@ -52,6 +52,30 @@ def ver_hc(request, id):
 
     return render(request,'gestion/hc/view.html', data)
 
+def editar_hc(request, id):
+
+    hc= get_object_or_404(Historia_clinica, id=id) #toma el producto de la id
+
+    data={
+        "formHC": HCForm(instance=hc) #toma el formulario agregar producto con los datos del instance
+    }
+    if request.method=='POST':
+        formulario=HCForm(data=request.POST, instance=hc, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            # messages.success(request,"Modificada Correctamente")
+            return redirect(to='home') #te redirige al listado de productos ya editados
+        else:
+            data["form"]=formulario
+
+    return render(request,'gestion/hc/hcedit.html', data)
+
+def matarPaciente(request,id):
+    pac= Historia_clinica.objects.get(id=id)
+    estado = Estado.objects.get(nombre='Fallecido')
+    pac.estado = estado
+    pac.save()
+    return redirect(to='home')
 ###Creacion de Formulario de los Pacientes###
 def createFormulario(request):
     data={

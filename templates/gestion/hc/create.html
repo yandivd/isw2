@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %} {% load static %} {% block content %}
 <main class="container d-flex flex-column mt-5">
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {%csrf_token%}
     <div class="d-flex w-100">
       <!-- left image side -->
