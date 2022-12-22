@@ -27,9 +27,16 @@ def hclistar(request):
 
 @permission_required('main.add_historia_clinica')
 def crearHC(request):
+
+    estados=Estado.objects.all()
+    medicos=Medico.objects.all()
+    sexos=Sexo.objects.all()
     
     data = {
         'form': HCForm,
+        'estados': estados,
+        'medicos': medicos,
+        'sexos': sexos,
     }
     
     if request.method=='POST':
