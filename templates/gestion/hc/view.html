@@ -1,5 +1,237 @@
-{% load static %}
-    <form method="get" enctype="multipart/form-data">
-        {%csrf_token%}
-        {{formHC}}
-    </form>
+
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main class="container d-flex flex-column mt-5">
+    <div class="d-flex w-100">
+      <!-- left image side -->
+      <div class="d-flex flex-column col-6">
+        <div class="d-flex flex-column mb-2">
+          <label for="id_nombre">Nombre:</label
+          ><input
+            class="form-control"
+            type="text"
+            name="nombre"
+            maxlength="100"
+            required=""
+            id="id_nombre"
+            placeholder="{{hc.nombre}}"
+            readonly
+          />
+        </div>
+        <div class="d-flex flex-column mb-2">
+          <label for="id_apellidos">Apellidos:</label
+          ><input
+            class="form-control"
+            type="text"
+            name="apellidos"
+            maxlength="150"
+            required=""
+            id="id_apellidos"
+            placeholder="{{hc.apellidos}}"
+            readonly
+          />
+        </div>
+        <div class="d-flex flex-column mb-2">
+          <label for="id_direccion">Direccion:</label
+          ><input
+            class="form-control"
+            type="text"
+            name="direccion"
+            maxlength="300"
+            required=""
+            id="id_direccion"
+            placeholder="{{hc.direccion}}"
+            readonly
+          />
+        </div>
+        <div class="d-flex flex-column mb-2">
+          <label for="id_municipio">Municipio:</label
+          ><input
+            class="form-control"
+            type="text"
+            name="municipio"
+            maxlength="100"
+            required=""
+            id="id_municipio"
+            placeholder="{{hc.municipio}}"
+            readonly
+          />
+        </div>
+        <div class="d-flex flex-column mb-2">
+          <label for="id_provincia">Provincia:</label
+          ><input
+            class="form-control"
+            type="text"
+            name="provincia"
+            maxlength="100"
+            required=""
+            id="id_provincia"
+            placeholder="{{hc.provincia}}"
+            readonly
+          />
+        </div>
+        <div class="d-flex flex-column mb-2">
+          <label for="id_cod_postal">Cod postal:</label
+          ><input
+            class="form-control"
+            type="text"
+            name="cod_postal"
+            maxlength="20"
+            required=""
+            id="id_cod_postal"
+            placeholder="{{hc.cod_postal}}"
+            readonly
+          />
+        </div>
+      </div>
+      <!-- image side -->
+      <div class="col-6 d-flex flex-column align-items-center">
+        <label for="id_img">Img:</label>
+        <img
+          src="{{hc.img.url}}"
+          style="width: 400px; height: 400px"
+          id="imagenPrevisualizacion"
+        />
+        {% comment %} <input type="file" name="img" accept="image/*" id="id_img" /> {% endcomment %}
+      </div>
+    </div>
+
+    <!-- below image & specifications -->
+
+    <div>
+      <div class="d-flex flex-column mb-2">
+        <label class="w-100" for="id_medico">Medico:</label
+        ><input
+          class="w-100 form-control"
+          name="medico"
+          required=""
+          id="id_medico"
+          placeholder="{{hc.medico.usuario.first_name}} {{hc.medico.usuario.last_name}} "
+          readonly
+          >
+      </div>
+      <div class="d-flex w-100">
+        <div class="d-flex flex-column col-6">
+          <div class="d-flex flex-column mb-2">
+            <label for="id_sexo">Sexo:</label
+            ><input
+              class="form-control"
+              name="sexo"
+              required=""
+              id="id_sexo"
+              placeholder="{{hc.sexo}}"
+              readonly
+            >
+          </div>
+          <div class="d-flex flex-column mb-2">
+            <label for="id_fecha_nacimiento">Fecha nacimiento:</label
+            ><input
+              class="form-control"
+              type="text"
+              name="fecha_nacimiento"
+              required=""
+              id="id_fecha_nacimiento"
+              placeholder="{{hc.fecha_nacimiento}}"
+              readonly
+              />
+          </div>
+          <div class="d-flex flex-column mb-2">
+            <label for="id_lugar_nacimiento">Lugar nacimiento:</label
+            ><input
+              class="form-control"
+              type="text"
+              name="lugar_nacimiento"
+              maxlength="100"
+              required=""
+              id="id_lugar_nacimiento"
+              placeholder="{{hc.lugar_nacimiento}}"
+              readonly
+              />
+          </div>
+          <div class="d-flex flex-column mb-2">
+            <label for="id_correo">Correo:</label
+            ><input
+              class="form-control"
+              type="email"
+              name="correo"
+              maxlength="254"
+              id="id_correo"
+              placeholder="{{hc.correo}}"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="d-flex flex-column col-6">
+          <div class="d-flex flex-column mb-2">
+            <label for="id_ci">Ci:</label
+            ><input
+              class="form-control"
+              type="text"
+              name="ci"
+              maxlength="11"
+              required=""
+              id="id_ci"
+              placeholder="{{hc.ci}}"
+              readonly
+            />
+          </div>
+          <div class="d-flex flex-column mb-2">
+            <label for="id_edad">Edad:</label
+            ><input
+              class="form-control"
+              type="number"
+              min="0"
+              name="edad"
+              required=""
+              id="id_edad"
+              placeholder="{{hc.edad}}"
+              readonly
+            />
+          </div>
+
+          <div class="d-flex flex-column mb-2">
+            <label for="id_telf_movil">Telf movil:</label
+            ><input
+              class="form-control"
+              type="text"
+              name="telf_movil"
+              maxlength="8"
+              required=""
+              id="id_telf_movil"
+              placeholder="{{hc.telf_movil}}"
+              readonly
+            />
+          </div>
+          <div class="d-flex flex-column mb-2">
+            <label for="id_telf_fijo">Telf fijo:</label
+            ><input
+              class="form-control"
+              type="text"
+              name="telf_fijo"
+              maxlength="8"
+              required=""
+              id="id_telf_fijo"
+              placeholder="{{hc.telf_fijo}}"
+              readonly
+            />
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column w-100">
+      <label for="id_observaciones">Observaciones:</label
+      ><textarea
+        class="form-control"
+        name="observaciones"
+        cols="40"
+        rows="5"
+        required=""
+        id="id_observaciones"
+        placeholder="{{hc.observaciones}}"
+        readonly
+      ></textarea>
+    </div>
+</main>
+{% endblock content %}

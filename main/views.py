@@ -47,7 +47,8 @@ def ver_hc(request, id):
     hc= get_object_or_404(Historia_clinica, id=id) #toma el producto de la id
 
     data={
-        "formHC": HCForm(instance=hc) #toma el formulario agregar producto con los datos del instance
+        "formHC": HCForm(instance=hc), #toma el formulario agregar producto con los datos del instance
+        "hc":hc,
     }
 
     return render(request,'gestion/hc/view.html', data)
