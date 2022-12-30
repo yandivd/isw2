@@ -42,7 +42,6 @@ def crearHC(request):
     if request.method=='POST':
         formulario=HCForm(data=request.POST, files=request.FILES)
         if formulario.is_valid():
-            print("A")
             formulario.save()
             # messages.success(request,"Modificada Correctamente")
             return redirect(to='home') #te redirige al listado de productos ya editados
